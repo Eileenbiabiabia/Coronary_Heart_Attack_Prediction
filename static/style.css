@@ -1,0 +1,176 @@
+/* General Reset */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f0ff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+/* 固定的顶部横幅样式 */
+.fixed-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #492c7f;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+.container {
+    padding-top: calc(10px + 20px); /* 在头部高度的基础上添加额外间距 */
+    margin-top: 50px; /* 增加足够的间距，确保不被 fixed-header 遮挡 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.card {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(178, 162, 211, 0.3);
+    max-width: 80%; /* 设置最大宽度为页面的 90% */
+    width: 80%; /* 使用相对宽度，让其覆盖大部分页面 */
+    text-align: center;
+    margin: auto; /* 居中 */
+}
+
+.title {
+    font-size: 1.5em; /* 标题字体大小 */
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+    text-align: center;
+    color: #2c3e50;
+    margin-top: 30px; /* 增加顶部外边距 */
+    margin-bottom: 20px; /* 增加底部外边距 */
+}
+
+.description {
+    font-size: 1em; /* 描述字体大小 */
+    color: #7f8c8d;
+    margin-top: 10px; /* 减小顶部边距 */
+    margin-bottom: 20px; /* 控制与输入框的间距 */
+    text-align: center; /* 居中显示 */
+}
+
+/* 默认 select 样式 */
+select {
+    padding: 10px;
+    font-size: 0.9em;
+    border: 1px solid #bdc3c7;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #f9f9f9; /* 默认背景色 */
+    color: #999; /* 默认文字颜色为灰色 */
+}
+
+/* 如果用户没有选择有效选项（默认状态） */
+select:invalid {
+    color: #999; /* 默认文字颜色为灰色 */
+}
+
+/* 如果用户选择了有效选项 */
+select:not(:invalid) {
+    color: #000; /* 有效选项文字变为黑色 */
+}
+
+/* 提示文字样式 */
+select option[value=""] {
+    color: #999; /* 默认选项颜色为灰色 */
+}
+
+.row {
+    display: flex;
+    justify-content: space-between; /* 每列之间的均匀间距 */
+    margin-bottom: 15px; /* 每行之间的间距 */
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column; /* 标签和输入框垂直排列 */
+    width: 30%; /* 每个输入框占行宽度的 30% */
+    min-width: 150px; /* 设置最小宽度，确保小屏幕显示良好 */
+}
+
+label {
+    font-weight: bold;
+    font-size: 0.9em; /* 保持字体大小 */
+    color: #34495e; /* 设置字体颜色 */
+    margin-bottom: 8px; /* 增加标签和输入框之间的间距 */
+    display: block; /* 保证 label 占据一整行，避免居中 */
+    text-align: left; /* 明确左对齐 */
+}
+
+/* input, select {
+    padding: 10px;
+    font-size: 0.9em;
+    border: 1px solid #bdc3c7;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+} */
+.input-group {
+    width: 30%; /* 输入框在行中分配均匀宽度 */
+}
+
+input, select {
+    padding: 10px; /* 设置输入框的内边距 */
+    font-size: 0.9em; /* 设置字体大小 */
+    border: 1px solid #bdc3c7; /* 设置边框颜色 */
+    border-radius: 5px; /* 设置圆角边框 */
+    width: 100%; /* 宽度占据父容器 */
+    box-sizing: border-box; /* 确保内边距和边框计入总宽度 */
+    margin-bottom: 15px; /* 增加输入框和下一个标签之间的间隔 */
+}
+
+input:focus, select:focus {
+    outline: none; /* 移除默认的聚焦边框 */
+    border: 1px solid #3498db; /* 聚焦时的边框颜色 */
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.5); /* 添加聚焦时的阴影效果 */
+}
+
+.btn {
+    background-color: #492c7f;
+    color: white;
+    padding: 10px;
+    font-size: 1em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+
+.btn:hover {
+    background-color: #2980b9;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .row {
+        flex-wrap: wrap; /* 小屏幕允许输入框换行 */
+    }
+
+    .input-group {
+        width: 100%; /* 输入框在小屏幕上占整行 */
+    }
+
+    .title {
+        font-size: 1.5em;
+    }
+
+    .description {
+        font-size: 0.9em;
+    }
+}
+

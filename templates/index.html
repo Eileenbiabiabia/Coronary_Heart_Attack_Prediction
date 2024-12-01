@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Attack Prediction</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <!-- 固定的顶部横幅 -->
+    <div class="fixed-header">
+        <h1>Northwestern University MSAI339</h1>
+    </div>
+    <div class="container">
+        <div class="card">
+            <h1 class="title">Heart Attack Prediction System</h1>
+            <p class="description">Welcome to the heart attack risk estimator.</p>
+            <p class="description">Terms of Service:...</p>
+
+            <!-- Form for user input -->
+            <form action="/predict" method="POST" class="form">
+                <!-- Row 1 -->
+                <div class="row">
+                    <div class="input-group">
+                        <label for="age">Age:</label>
+                        <input type="number" id="age" name="age" placeholder="Enter your age" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="weight">Weight (kg):</label>
+                        <input type="number" id="weight" name="weight" placeholder="Enter your weight" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="height">Height (cm):</label>
+                        <input type="number" id="height" name="height" placeholder="Enter your height" required>
+                    </div>
+                </div>
+
+                <!-- Row 2 -->
+                <div class="row">
+                    <div class="input-group">
+                        <label for="cholesterol">Cholesterol Level:</label>
+                        <input type="number" id="cholesterol" name="cholesterol" placeholder="Enter cholesterol level" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="blood_pressure">Blood Pressure:</label>
+                        <input type="number" id="blood_pressure" name="blood_pressure" placeholder="Enter blood pressure" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="sex">Sex:</label>
+                        <select id="sex" name="sex" required>
+                            <option value="" disabled selected>Select</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Row 3
+                <div class="row">
+                    <div class="input-group">
+                        <label for="blood_pressure">Blood Pressure:</label>
+                        <input type="number" id="blood_pressure" name="blood_pressure" placeholder="Enter blood pressure" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="model_choice">Select Model:</label>
+                        <select id="model_choice" name="model_choice">
+                            <option value="model_1">Model 1</option>
+                            <option value="model_2">Model 2</option>
+                        </select>
+                    </div>
+                </div> -->
+
+                <!-- Submit button -->
+                <button type="submit" class="btn">Predict</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
