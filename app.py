@@ -8,7 +8,7 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
-with open('model.pkl', 'rb') as file:
+with open('xgboost_model.pkl', 'rb') as file:
     model = pickle.load(file)
 
 @app.route("/predict", methods=["POST"])
@@ -76,9 +76,9 @@ def predict():
         input_data = np.array([[bmi, age_category, sex_mapping, cholesterol, blood_pressure]])
 
         # 模型预测
-        # prediction = model.predict(input_data)
-        # prediction_result = round(float(prediction[0]), 2)  # 假设是一个单一数值输出
-        prediction_result = 0.4
+        prediction = model.predict(input_data)
+        prediction_result = round(float(prediction[0]), 2)  # 假设是一个单一数值输出
+        # prediction_result = 0.4
 
         # 将结果传递给结果页面
         return render_template('result.html', prediction=prediction_result)
