@@ -1,12 +1,32 @@
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prediction Result</title>
     <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
-    <h1>Prediction Result</h1>
-    <p>The predicted value is: {{ prediction }}</p>
-    <a href="/">Go Back</a>
+    <div class="container">
+        <div class="card">
+            <h1>Prediction Result</h1>
+            <p>Your predicted risk is: <strong>{{ prediction }}</strong></p>
+            
+            <!-- 分析部分 -->
+            <div class="analysis">
+                {% if prediction < 10 %}
+                    <p>Your risk is low. Keep maintaining a healthy lifestyle!</p>
+                {% elif prediction < 20 %}
+                    <p>Your risk is moderate. Consider lifestyle changes and consult a clinician.</p>
+                {% else %}
+                    <p>Your risk is high. Please consult a clinician for detailed advice.</p>
+                {% endif %}
+            </div>
+            
+            <!-- 返回主页面按钮 -->
+            <a href="/" class="btn">Back to Home</a>
+        </div>
+    </div>
 </body>
 </html>

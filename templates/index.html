@@ -15,7 +15,9 @@
         <div class="card">
             <h1 class="title">Heart Attack Prediction System</h1>
             <p class="description">Welcome to the heart attack risk estimator.</p>
-            <p class="description">Terms of Service:...</p>
+            <p class="description" style="text-align: left;">For Optimal Use: </p>
+            <p class="description" style="text-align: left;">Forecast the potential impact of different interventions on patient risk. </p>
+            <p class="description" style="text-align: left;">Use the information above to help with clinician-patient discussions on risk and risk-lowering interventions.</p>
 
             <!-- Form for user input -->
             <form action="/predict" method="POST" class="form">
@@ -26,50 +28,49 @@
                         <input type="number" id="age" name="age" placeholder="Enter your age" required>
                     </div>
                     <div class="input-group">
-                        <label for="weight">Weight (kg):</label>
-                        <input type="number" id="weight" name="weight" placeholder="Enter your weight" required>
+                        <label for="sex">Sex:</label>
+                        <select id="sex" name="sex" required>
+                            <option value="" disabled selected>Select</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                        </select>
                     </div>
                     <div class="input-group">
-                        <label for="height">Height (cm):</label>
-                        <input type="number" id="height" name="height" placeholder="Enter your height" required>
+                        <label for="cholesterol">Cholesterol Level:</label>
+                        <input type="number" id="cholesterol" name="cholesterol" placeholder="Enter cholesterol level" required>
                     </div>
                 </div>
 
                 <!-- Row 2 -->
                 <div class="row">
                     <div class="input-group">
-                        <label for="cholesterol">Cholesterol Level:</label>
-                        <input type="number" id="cholesterol" name="cholesterol" placeholder="Enter cholesterol level" required>
+                        <label for="weight">Weight:</label>
+                        <div style="display: flex; gap: 10px; align-items: center;">
+                            <input type="number" id="weight" name="weight" placeholder="Enter your weight" required style="flex: 7;">
+                            <select id="weight-unit" name="weight-unit" style="flex: 1;">
+                                <option value="kg" selected>kg</option>
+                                <option value="lb">lb</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label for="height">Height:</label>
+                        <div style="display: flex; gap: 10px; align-items: center; width: 100%;">
+                            <!-- 用户输入高度 -->
+                            <input type="number" id="height" name="height" placeholder="Enter your height" required style="flex: 7;">
+                            <!-- 下拉框选择单位 -->
+                            <select id="height-unit" name="height-unit" style="flex: 1;">
+                                <option value="cm" selected>cm</option>
+                                <option value="feet">feet</option>
+                            </select>
+                        </div>
                     </div>
                     <div class="input-group">
                         <label for="blood_pressure">Blood Pressure:</label>
                         <input type="number" id="blood_pressure" name="blood_pressure" placeholder="Enter blood pressure" required>
-                    </div>
-                    <div class="input-group">
-                        <label for="sex">Sex:</label>
-                        <select id="sex" name="sex" required>
-                            <option value="" disabled selected>Select</option>
-                            <option value="male">Male</option>
-                            <option value="female">Female</option>
-                            <option value="other">Other</option>
-                        </select>
-                    </div>
+                    </div>                
                 </div>
 
-                <!-- Row 3
-                <div class="row">
-                    <div class="input-group">
-                        <label for="blood_pressure">Blood Pressure:</label>
-                        <input type="number" id="blood_pressure" name="blood_pressure" placeholder="Enter blood pressure" required>
-                    </div>
-                    <div class="input-group">
-                        <label for="model_choice">Select Model:</label>
-                        <select id="model_choice" name="model_choice">
-                            <option value="model_1">Model 1</option>
-                            <option value="model_2">Model 2</option>
-                        </select>
-                    </div>
-                </div> -->
 
                 <!-- Submit button -->
                 <button type="submit" class="btn">Predict</button>
@@ -78,3 +79,21 @@
     </div>
 </body>
 </html>
+
+<script>
+    // 获取输入框和单位下拉框元素
+    const heightInput = document.getElementById('height');
+    const heightUnit = document.getElementById('height-unit');
+
+    // 添加事件监听器，动态更新输入框的提示信息
+    heightUnit.addEventListener('change', () => {
+        const unit = heightUnit.value; // 获取当前选择的单位
+
+        // 根据选择的单位动态更新 placeholder
+        if (unit === 'm') {
+            heightInput.placeholder = "Enter your height in meters";
+        } else if (unit === 'feet') {
+            heightInput.placeholder = "Enter your height in feet";
+        }
+    });
+</script>

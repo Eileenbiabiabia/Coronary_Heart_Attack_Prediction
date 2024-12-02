@@ -59,6 +59,7 @@ body {
     color: #7f8c8d;
     margin-top: 10px; /* 减小顶部边距 */
     margin-bottom: 20px; /* 控制与输入框的间距 */
+    line-height: 0.7; /* 设置行间距，1.5 表示 1.5 倍的字体大小 */
     text-align: center; /* 居中显示 */
 }
 
@@ -150,6 +151,12 @@ input:focus, select:focus {
     transition: background-color 0.3s;
 }
 
+input[readonly] {
+    background-color: #f9f9f9; /* 设置背景颜色为浅灰色 */
+    color: #333; /* 文字颜色为黑色 */
+    border: 1px solid #bdc3c7; /* 边框颜色 */
+    cursor: not-allowed; /* 鼠标指针显示为禁止状态 */
+}
 
 .btn:hover {
     background-color: #2980b9;
