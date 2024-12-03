@@ -33,11 +33,17 @@
                             <option value="" disabled selected>Select</option>
                             <option value="male">Male</option>
                             <option value="female">Female</option>
+                            <option value="non binary">non_binary</option>
                         </select>
                     </div>
+                    <!-- High Cholesterol -->
                     <div class="input-group">
-                        <label for="cholesterol">Cholesterol Level:</label>
-                        <input type="number" id="cholesterol" name="cholesterol" placeholder="Enter cholesterol level" required>
+                        <label for="high_cholesterol">Do you have High Cholesterol?</label>
+                        <select id="high_cholesterol" name="high_cholesterol" required>
+                            <option value="" disabled selected>Select</option>
+                            <option value="1">Yes</option>
+                            <option value="0">No</option>
+                        </select>
                     </div>
                 </div>
 
@@ -46,7 +52,7 @@
                     <div class="input-group">
                         <label for="weight">Weight:</label>
                         <div style="display: flex; gap: 10px; align-items: center;">
-                            <input type="number" id="weight" name="weight" placeholder="Enter your weight" required style="flex: 7;">
+                            <input type="number" id="weight" name="weight" placeholder="Enter your weight" required style="flex: 5;">
                             <select id="weight-unit" name="weight-unit" style="flex: 1;">
                                 <option value="kg" selected>kg</option>
                                 <option value="lb">lb</option>
@@ -57,7 +63,7 @@
                         <label for="height">Height:</label>
                         <div style="display: flex; gap: 10px; align-items: center; width: 100%;">
                             <!-- 用户输入高度 -->
-                            <input type="number" id="height" name="height" placeholder="Enter your height" required style="flex: 7;">
+                            <input type="number" id="height" name="height" placeholder="Enter your height" required style="flex: 5;">
                             <!-- 下拉框选择单位 -->
                             <select id="height-unit" name="height-unit" style="flex: 1;">
                                 <option value="cm" selected>cm</option>
@@ -65,10 +71,31 @@
                             </select>
                         </div>
                     </div>
+                    <!-- High Blood Pressure -->
                     <div class="input-group">
-                        <label for="blood_pressure">Blood Pressure:</label>
-                        <input type="number" id="blood_pressure" name="blood_pressure" placeholder="Enter blood pressure" required>
-                    </div>                
+                        <label for="high_blood_pressure">Do you have High Blood Pressure?</label>
+                        <select id="high_blood_pressure" name="high_blood_pressure" required>
+                            <option value="" disabled selected>Select</option>
+                            <option value="1">Yes</option>
+                            <option value="0">No</option>
+                        </select>
+                    </div>           
+                </div>
+
+                <!-- Row 3 -->
+                <div class="row">
+                    <!-- General Health Input -->
+                    <div class="input-group">
+                        <label for="genhlth">General Health:</label>
+                        <select id="genhlth" name="genhlth" required>
+                            <option value="" disabled selected>Select your health status</option>
+                            <option value="1">1 - Excellent</option>
+                            <option value="2">2 - Very Good</option>
+                            <option value="3">3 - Good</option>
+                            <option value="4">4 - Fair</option>
+                            <option value="5">5 - Poor</option>
+                        </select>
+                    </div>
                 </div>
 
 

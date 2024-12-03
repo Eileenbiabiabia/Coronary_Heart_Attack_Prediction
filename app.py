@@ -9,8 +9,8 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
-# with open('model/decision_tree_feature_engineering.pkl', 'rb') as file:
-#     loaded_model = pickle.load(file)
+with open('model/decision_tree_6_features.pkl', 'rb') as file:
+    loaded_model = pickle.load(file)
 
 
 @app.route("/predict", methods=["POST"])
@@ -21,9 +21,11 @@ def predict():
         weight_unit = request.form['weight-unit']
         height = float(request.form['height'])
         height_unit = request.form['height-unit']
+        GenHlth = int(request.form['genhlth'])
         age = int(request.form['age'])
-        cholesterol = float(request.form['cholesterol'])  # 胆固醇水平
-        blood_pressure = float(request.form['blood_pressure'])  # 血压值
+        HighChol = float(request.form['high_cholesterol'])  # 胆固醇水平
+        HighBP = float(request.form['high_blood_pressure'])  # 血压值
+        CardioRisk = HighBP + HighChol
         sex = request.form['sex']
 
         # 转换 height 为米 (如果单位是 feet)
@@ -35,7 +37,8 @@ def predict():
         if weight_unit == 'lb':
             weight = weight * 0.453592
         
-        bmi = weight / (height ** 2)
+        BMI = round(weight / (height ** 2), 1)
+        
 
         # 将年龄转换为 13-level 分类
         def convert_age_to_category(age):
@@ -68,22 +71,26 @@ def predict():
             else:
                 return 13  # 80 or older
 
-        age_category = convert_age_to_category(age)
+        Age = convert_age_to_category(age)
 
         # 将性别映射为模型可接受的数值
-        sex_mapping = {'female': 0, 'male': 1}
-        sex_mapping = sex_mapping.get(sex, -1)
+        sex_mapping = {
+            "male": 0,          # Male 映射为 0
+            "female": 1,        # Female 映射为 1
+            "non binary": 0.5   # Non-binary 映射为 0.5
+        }
+        Sex = sex_mapping.get(sex, -1)
 
         # 生成模型输入数据
-        #input_data = np.array([[bmi, age_category, sex_mapping, cholesterol, blood_pressure]])
+        input_data = np.array([[HighBP, HighChol, BMI, GenHlth, Sex, Age,CardioRisk]])
 
-        # 模型预测
-        # prediction = loaded_model.predict(input_data)
-        # prediction_result = round(float(prediction[0]), 2)  # 假设是一个单一数值输出
-        prediction_result = 0.4
+        #模型预测
+        prediction = loaded_model.predict(input_data)
+        prediction_result = round(float(prediction[0]), 2)  # 假设是一个单一数值输出
+        #prediction_result = 0.4
 
         # 将结果传递给结果页面
-        return render_template('result.html', prediction=prediction_result)
+        return render_template('result.html', bmi=BMI, chol=HighChol, bp=HighBP,prediction=prediction_result)
 
     except Exception as e:
         # 如果出错，返回错误信息

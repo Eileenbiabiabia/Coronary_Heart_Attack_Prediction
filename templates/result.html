@@ -19,10 +19,8 @@
             
             <!-- 分析部分 -->
             <div class="analysis">
-                {% if prediction < 10 %}
+                {% if prediction == 0 %}
                     <p>Your risk is low. Keep maintaining a healthy lifestyle!</p>
-                {% elif prediction < 20 %}
-                    <p>Your risk is moderate. Consider lifestyle changes and consult a clinician.</p>
                 {% else %}
                     <p>Your risk is high. Please consult a clinician for detailed advice.</p>
                 {% endif %}
@@ -34,40 +32,187 @@
     </div>
     
     <!-- 可滚动的分析模块 -->
-    <div class="scrollable-modules">
-        <!-- BMI 卡片 -->
+    <div class="analysis-cards">
         <div class="card">
             <div class="card-header" onclick="toggleCard('bmi-content')">
                 <h3>BMI</h3>
             </div>
             <div class="card-content" id="bmi-content">
-                <p>Your BMI: 26.5</p>
+                <p>Your BMI: {{ bmi }}</p>
                 <p>Normal Range: 18.5 - 24.9</p>
-                <p>Improvement Tips: Include more vegetables in your diet and exercise 3 times a week.</p>
+                {% if bmi < 18.5 %}
+                    <p>Your BMI is low. Gain weight by consuming a balanced diet and increasing calorie intake.</p>
+                {% elif bmi <= 24.9 %}
+                    <p>Your BMI is standard. Maintain your current lifestyle and keep active.</p>
+                {% else %}
+                    <p>Your BMI is high. Reduce calorie intake, include more vegetables, and exercise 3 times a week.</p>
+                {% endif %}
+                <!-- 添加更多描述内容 -->
+                <h4>What is BMI and how does it affect me?</h4>
+                <p>
+                    Body mass index (BMI) is a person's weight in kilograms divided by the square of their height in meters. 
+                    BMI is an easy screening method for weight category—underweight, healthy weight, overweight, and obese.
+                    BMI does not measure body fat directly but provides a reasonable body fat estimate.
+                </p>
+                
+                <!-- 提供饮食建议 -->
+                <h4>Advice for dietary</h4>
+                {% if bmi <= 24.9 %}
+                <p>
+                    Your BMI is healthy! However, you can still improve your BMI by consuming fewer calories than you burn.
+                    Eating a healthy, balanced diet is an important part of staying healthy and feeling your best. 
+                    This means eating a wide variety of foods in the right proportions, and consuming the right amount of foodand drink to achieve and maintain a healthy body weight.
+                </p>
+                <ul>
+                    <li>Eat at least 5 portions of a variety of fruits and vegetables every day.</li>
+                    <li>Base your meals on higher-fiber starchy foods suchas potatoes, bread, rice or pasta.</li>
+                    <li>Eat and drink dairy or dairy alternatives (such as soy drinks).</li>
+                    <li>Eat beans, pulses, fish, eggs, meat, and other high-protein foods.</li>
+                    <li>Choose unsaturated oils and spreads, and eat them in small amounts.</li>
+                    <li>Drink plenty of fluids (at least 6 to 8 glasses a day)Consume less foods and drinks that are high in fat, salt, and sugar.</li>
+                    <li>Choose different foods from the 5 main food groups to get a wide range of nutrients.</li>
+                </ul>
+                    
+                {% else %}
+                <p>
+                    The best way to lower your BMI is to consume fewer calories than you burn. 
+                    A healthy diet is high in fruits, vegetables, fiber, whole grains, and nuts. 
+                    Here are some tips for losing weight:
+                </p>
+                <ul>
+                    <li>Reduce your sugar and carbohydrate intake.</li>
+                    <li>Fill up on non-starchy vegetables, fats, and proteins.</li>
+                    <li>Consume fewer foods and drinks that are high in fat, salt, and sugar.</li>
+                </ul>
+                {% endif %}
+
+                <!-- 提供运动建议 -->
+                <h4>Advice for exercise</h4>
+                {% if bmi <= 24.9 %}
+                <p>
+                    To burn calories and visceral fat, do aerobic activitiessuch as walking, running, cycling, or swimming for 3.5 hours every week.
+                    Strength training twice a week can also help burn calories while increasing lean muscle and boosting your metabolism.
+                </p>
+                {% else %}
+                <p>
+                    Walking, running, and cycling are highly effective means of reducing body fat. 
+                    The American Heart Association recommends a minimum of 30 minutes of moderate aerobic exercise at least 5 days a week.
+                </p>
+                {% endif %}
             </div>
         </div>
-
-        <!-- Cholesterol 卡片 -->
+    
         <div class="card">
-            <div class="card-header" onclick="toggleCard('cholesterol-content')">
+            <div class="card-header" onclick="toggleCard('chol-content')">
                 <h3>Cholesterol</h3>
             </div>
-            <div class="card-content" id="cholesterol-content">
-                <p>Your Cholesterol Level: 210 mg/dL</p>
-                <p>Normal Range: < 200 mg/dL</p>
-                <p>Improvement Tips: Reduce saturated fats and increase physical activity.</p>
+            <div class="card-content" id="chol-content">
+                {% if chol == 0 %}
+                    <p>Great! Your Cholesterol is standard.</p>
+                {% else %}
+                    <p>Your Cholesterol is high. No worries, you can use the following tips to improve it!</p>
+                {% endif %}
+                <!-- 添加更多描述内容 -->
+                <h4>What is Cholesterol and how does it affect me?</h4>
+                <p>
+                    Cholesterol is a waxy, fat-like substance that your body needs in moderation to be healthy. 
+                    It's found in all your cells and is made by your liver. 
+                    Your body uses cholesterol to: Make hormones and vitamin D, Digest fatty foods, and Form protective layers around cell membranes.
+                </p>
+                
+                <!-- 提供饮食建议 -->
+                <h4>Advice for dietary</h4>
+                {% if chol == 1 %}
+                <p>
+                    Eat more fruits, vegetables, whole grains, legumes, nuts, and seeds. 
+                    These foods are high in fiber, which can help reduce LDL cholesterol. You can also try: 
+                </p>
+                <ul>
+                    <li>Limiting foods high in saturated fat, like red meat and full-fat dairy products.</li>
+                    <li>Avoiding foods with trans fat.</li>
+                    <li>Swapping butter for vegetable oil spreads.</li>
+                    <li>Switching whole milk to skimmed milk.</li>
+                    <li>Eating oily fish, like mackerel and salmon.</li>
+                </ul>
+                    
+                {% else %}
+                <p>
+                    You are doing great! 
+                    To maintain healthy cholesterol levels and promote cardiovascular health, prioritize foods rich in dietary fiber such as oats, beans, and apples. 
+                    These foods can help stabilize cholesterol levels and reduce the accumulation of low-density lipoprotein (LDL). 
+                    Additionally, aim to consume at three five servings of vegetables and fruits daily.
+                </p>
+                {% endif %}
+
+                <!-- 提供运动建议 -->
+                <h4>Advice for exercise</h4>
+                {% if chol == 1 %}
+                <p>
+                    Try to get at least 150 minutes of moderate intensity aerobic exercise per week, or 75 minutes of vigorous intensity aerobic exercise per week. 
+                    You can also try to include moderate to high intensity exercise that strengthens muscles at least 2 days per week. 
+                </p>
+                {% else %}
+                <p>
+                    Engaging in regular physical activity is essential for maintaining healthy cholesterol levels and overall cardiovascular health. 
+                    Aim for at least 150 minutes of moderate aerobic exercise per week, such as brisk walking, cycling, or swimming. 
+                    These activities can help raise high-density lipoprotein (HDL), the “good” cholesterol, while lowering LDL levels.
+                </p>
+                {% endif %}
             </div>
         </div>
-
-        <!-- Blood Pressure 卡片 -->
+    
         <div class="card">
             <div class="card-header" onclick="toggleCard('bp-content')">
                 <h3>Blood Pressure</h3>
             </div>
             <div class="card-content" id="bp-content">
-                <p>Your Blood Pressure: 140/90 mmHg</p>
-                <p>Normal Range: < 120/80 mmHg</p>
-                <p>Improvement Tips: Reduce salt intake and monitor blood pressure regularly.</p>
+                {% if bp == 0 %}
+                    <p>Great! Your blood pressure is standard.</p>
+                {% else %}
+                    <p>Your blood pressure is high. No worries, you can use the following tips to improve it!</p>
+                {% endif %}
+                <!-- 添加更多描述内容 -->
+                <h4>What is Blood Pressure and how does it affect me?</h4>
+                <p>
+                    Blood pressure is the force exerted by your blood against the walls of your arteries as your heart pumps blood throughout your body; 
+                    Essentially, it's the pressure of blood flowing through your arteries, and if consistently too high (known as hypertension), it can damage your blood vessels and organs, potentially leading to serious health complications like heart attack, stroke, and kidney disease. 
+                </p>
+                
+                <!-- 提供饮食建议 -->
+                <h4>Advice for dietary</h4>
+                {% if bp == 1 %}
+                <ul>
+                    <li>Low sodium: The primary focus is significantly reducing your daily sodium intake.</li>
+                    <li>Rich in potassium: Include foods high in potassium like bananas, potatoes, and leafy greens to counteract sodium effects.</li>
+                    <li>Whole grains: Opt for whole grains over refined carbohydrates.</li>
+                    <li>Fruits and vegetables: Eat a variety of fresh fruits and vegetables.</li>
+                    <li>Lean protein: Choose lean protein sources like fish, poultry, and beans.</li>
+                </ul>
+                    
+                {% else %}
+                <p>
+                    You are doing great! 
+                    To maintain healthy blood pressure levels, focus on a balanced diet rich in fresh vegetables, fruits, whole grains, and lean proteins. 
+                    Limit your sodium intake to less than 2,300 mg per day by avoiding highly processed and packaged foods. 
+                    Incorporate potassium-rich foods like bananas, spinach, and sweet potatoes to support blood pressure regulation. 
+                    Stay hydrated by drinking plenty of water throughout the day.
+                </p>
+                {% endif %}
+
+                <!-- 提供运动建议 -->
+                <h4>Advice for exercise</h4>
+                {% if chol == 1 %}
+                <p>
+                    Try to get at least 150 minutes of moderate intensity aerobic exercise per week, or 75 minutes of vigorous intensity aerobic exercise per week. 
+                    You can also try to include moderate to high intensity exercise that strengthens muscles at least 2 days per week. 
+                </p>
+                {% else %}
+                <p>
+                    Engaging in regular physical activity is essential for maintaining healthy cholesterol levels and overall cardiovascular health. 
+                    Include resistance training twice a week to strengthen muscles and improve circulation. 
+                    Avoid a sedentary lifestyle by staying active throughout the day, such as taking short walks or stretching every hour if sitting for prolonged periods.
+                </p>
+                {% endif %}
             </div>
         </div>
     </div>

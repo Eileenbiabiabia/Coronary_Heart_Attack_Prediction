@@ -43,17 +43,23 @@ body {
     max-height: 0; /* 初始状态内容高度为0 */
     overflow: hidden; /* 隐藏超出部分 */
     transition: max-height 0.5s ease; /* 添加平滑过渡效果 */
-    background-color: #f9f9f9;
+    background-color: #f9f9f9; /* 背景色 */
     padding: 0 10px; /* 内边距，视觉优化 */
+    width: 90%; /* 限制内容宽度（可根据需要调整） */
+    max-width: 600px; /* 最大宽度，确保卡片不会太宽 */
+    margin: 0 auto; /* 内容居中 */
+    box-sizing: border-box; /* 包括边框和内边距 */
 }
 
 .card-content p {
     margin: 10px 0;
+    text-align: left; /* 设置文本左对齐 */
 }
 
-/* 内容展开时设置较大高度 */
 .card-content.open {
-    max-height: 200px; /* 根据内容的最大高度调整 */
+    max-height: 300px; /* 打开卡片时的最大高度 */
+    overflow-y: auto; /* 允许垂直滚动 */
+    padding: 10px; /* 添加内边距 */
 }
 
 .card-container {
@@ -103,6 +109,14 @@ body {
     text-align: center;
     margin: auto; /* 居中 */
 }
+
+.analysis-cards {
+    display: flex;
+    flex-direction: column; /* 垂直排列 */
+    align-items: center; /* 卡片水平居中 */
+    gap: 15px; /* 卡片之间的间距 */
+}
+
 .scrollable-modules {
     display: flex;
     flex-direction: column;
@@ -165,6 +179,7 @@ select option[value=""] {
     margin-bottom: 15px; /* 每行之间的间距 */
 }
 
+
 .input-group {
     display: flex;
     flex-direction: column; /* 标签和输入框垂直排列 */
@@ -181,14 +196,6 @@ label {
     text-align: left; /* 明确左对齐 */
 }
 
-/* input, select {
-    padding: 10px;
-    font-size: 0.9em;
-    border: 1px solid #bdc3c7;
-    border-radius: 5px;
-    width: 100%;
-    box-sizing: border-box;
-} */
 .input-group {
     width: 30%; /* 输入框在行中分配均匀宽度 */
 }
