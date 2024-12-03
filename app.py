@@ -10,7 +10,10 @@ def index():
     return render_template('index.html')
 
 with open('model/decision_tree_6_features.pkl', 'rb') as file:
-    loaded_model = pickle.load(file)
+    loaded_model_decision_tree = pickle.load(file)
+
+with open('model/stacking_model_updated.pkl', 'rb') as file:
+    loaded_model_stacking_model = pickle.load(file)
 
 
 @app.route("/predict", methods=["POST"])
@@ -85,12 +88,14 @@ def predict():
         input_data = np.array([[HighBP, HighChol, BMI, GenHlth, Sex, Age,CardioRisk]])
 
         #模型预测
-        prediction = loaded_model.predict(input_data)
-        prediction_result = round(float(prediction[0]), 2)  # 假设是一个单一数值输出
+        prediction1 = loaded_model_decision_tree.predict(input_data)
+        prediction_result1 = round(float(prediction1[0]), 2)  # 假设是一个单一数值输出
+        prediction2 = loaded_model_stacking_model.predict(input_data)
+        prediction_result2 = round(float(prediction2[0]), 2)  # 假设是一个单一数值输出
         #prediction_result = 0.4
 
         # 将结果传递给结果页面
-        return render_template('result.html', bmi=BMI, chol=HighChol, bp=HighBP,prediction=prediction_result)
+        return render_template('result.html', bmi=BMI, chol=HighChol, bp=HighBP,prediction1=prediction_result1, prediction2=prediction_result2)
 
     except Exception as e:
         # 如果出错，返回错误信息

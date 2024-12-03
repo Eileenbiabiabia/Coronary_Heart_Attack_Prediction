@@ -15,11 +15,12 @@
     <div class="result-container">
         <div class="card">
             <h1>Prediction Result</h1>
-            <p>Your predicted risk is: <strong>{{ prediction }}</strong></p>
+            <p>Your predicted risk is: <strong>{{ prediction1 }}</strong></p>
+            <p>Your predicted risk is: <strong>{{ prediction2 }}</strong></p>
             
             <!-- 分析部分 -->
             <div class="analysis">
-                {% if prediction == 0 %}
+                {% if prediction1 == 0 %}
                     <p>Your risk is low. Keep maintaining a healthy lifestyle!</p>
                 {% else %}
                     <p>Your risk is high. Please consult a clinician for detailed advice.</p>
