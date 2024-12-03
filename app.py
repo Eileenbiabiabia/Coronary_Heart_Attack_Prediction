@@ -9,7 +9,7 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
-# with open('xgboost_model.pkl', 'rb') as file:
+# with open('model/decision_tree_feature_engineering.pkl', 'rb') as file:
 #     loaded_model = pickle.load(file)
 
 
@@ -75,7 +75,7 @@ def predict():
         sex_mapping = sex_mapping.get(sex, -1)
 
         # 生成模型输入数据
-        input_data = np.array([[bmi, age_category, sex_mapping, cholesterol, blood_pressure]])
+        #input_data = np.array([[bmi, age_category, sex_mapping, cholesterol, blood_pressure]])
 
         # 模型预测
         # prediction = loaded_model.predict(input_data)

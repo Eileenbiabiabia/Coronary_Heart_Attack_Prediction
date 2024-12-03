@@ -8,7 +8,11 @@
     <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
-    <div class="container">
+    <div class="fixed-header">
+        <h1>Northwestern University MSAI339</h1>
+    </div>
+
+    <div class="result-container">
         <div class="card">
             <h1>Prediction Result</h1>
             <p>Your predicted risk is: <strong>{{ prediction }}</strong></p>
@@ -28,5 +32,47 @@
             <a href="/" class="btn">Back to Home</a>
         </div>
     </div>
+    
+    <div class="card-container">
+        <!-- BMI 卡片 -->
+        <div class="card">
+            <div class="card-header" onclick="toggleCard('bmi-content')">
+                <h3>BMI</h3>
+            </div>
+            <div class="card-content" id="bmi-content">
+                <p><strong>Your BMI:</strong> 26.5</p>
+                <p><strong>Normal Range:</strong> 18.5 - 24.9</p>
+                <p><strong>Improvement Tips:</strong> Include more vegetables in your diet and exercise 3 times a week.</p>
+            </div>
+        </div>
+    
+        <!-- Cholesterol 卡片 -->
+        <div class="card">
+            <div class="card-header" onclick="toggleCard('cholesterol-content')">
+                <h3>Cholesterol</h3>
+            </div>
+            <div class="card-content" id="cholesterol-content">
+                <p><strong>Your Cholesterol Level:</strong> 210 mg/dL</p>
+                <p><strong>Normal Range:</strong> < 200 mg/dL</p>
+                <p><strong>Improvement Tips:</strong> Reduce saturated fats and increase physical activity.</p>
+            </div>
+        </div>
+    
+        <!-- Blood Pressure 卡片 -->
+        <div class="card">
+            <div class="card-header" onclick="toggleCard('bp-content')">
+                <h3>Blood Pressure</h3>
+            </div>
+            <div class="card-content" id="bp-content">
+                <p><strong>Your Blood Pressure:</strong> 140/90 mmHg</p>
+                <p><strong>Normal Range:</strong> < 120/80 mmHg</p>
+                <p><strong>Improvement Tips:</strong> Reduce salt intake and monitor blood pressure regularly.</p>
+            </div>
+        </div>
+    </div>
+
+
+    
+    <script src="/static/script.js"></script>
 </body>
 </html>

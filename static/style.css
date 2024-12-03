@@ -23,6 +23,67 @@ body {
     z-index: 1000;
 }
 
+.result-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    margin: 20px;
+}
+
+.modules-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap; /* If screen width is small, allow wrapping */
+    gap: 20px;
+    width: 100%;
+}
+
+.card-content {
+    max-height: 0; /* 初始状态内容高度为0 */
+    overflow: hidden; /* 隐藏超出部分 */
+    transition: max-height 0.5s ease; /* 添加平滑过渡效果 */
+    background-color: #f9f9f9;
+    padding: 0 10px; /* 内边距，视觉优化 */
+}
+
+.card-content p {
+    margin: 10px 0;
+}
+
+/* 内容展开时设置较大高度 */
+.card-content.open {
+    max-height: 200px; /* 根据内容的最大高度调整 */
+}
+
+.card-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin: 20px;
+}
+
+.card {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+    background-color: #492c7f;
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.card-header h3 {
+    margin: 0;
+}
+
+
+
 .container {
     padding-top: calc(10px + 20px); /* 在头部高度的基础上添加额外间距 */
     margin-top: 50px; /* 增加足够的间距，确保不被 fixed-header 遮挡 */
