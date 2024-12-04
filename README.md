@@ -31,6 +31,6 @@ In our website demo, we accomplished several functionalities:
 2. Giving advice on health data such as BMI, providing dietary advice and exercise advice based on the health condition of different users.(See Figure B, C in Appendix)
 Given our website is used more of a reference, we put a lot of healthy tips on daily lifestyle rather than giving serious medical diagnosis.
 
-#How to run our website?
-pip install requirements.txt
+#How to run our website?  
+pip install requirements.txt  
 flask run
