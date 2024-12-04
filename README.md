@@ -29,31 +29,8 @@ We developed a website demo to realize real time interface and heart attack pred
 In our website demo, we accomplished several functionalities:
 1. Using our model to give predictions based on the user's inputs(See Figure A in Appendix).
 2. Giving advice on health data such as BMI, providing dietary advice and exercise advice based on the health condition of different users.(See Figure B, C in Appendix)
-Given our website is used more of a reference, we put a lot of healthy tips on daily lifestyle rather than giving serious medical diagnosis. 
+Given our website is used more of a reference, we put a lot of healthy tips on daily lifestyle rather than giving serious medical diagnosis.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Appendix
-
-
-Figure A
-
-Figure B
-
-Figure C
+#How to run our website?
+pip install requirements.txt
+flask run
