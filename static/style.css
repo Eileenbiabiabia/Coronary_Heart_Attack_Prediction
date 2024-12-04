@@ -104,8 +104,8 @@ body {
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(178, 162, 211, 0.3);
-    max-width: 80%; /* 设置最大宽度为页面的 90% */
-    width: 80%; /* 使用相对宽度，让其覆盖大部分页面 */
+    max-width: 90%; /* 设置最大宽度为页面的 90% */
+    width: 90%; /* 使用相对宽度，让其覆盖大部分页面 */
     text-align: center;
     margin: auto; /* 居中 */
 }

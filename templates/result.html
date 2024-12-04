@@ -9,8 +9,7 @@
 </head>
 <body>
     <div class="fixed-header">
-        <h1>Northwestern University MSAI339</h1>
-        <h1>Group 1-2-3</h1>
+        <h1>Northwestern University MSAI339 Group 1-2-3</h1>
     </div>
 
     <div class="result-container">
@@ -19,11 +18,11 @@
             <!-- 分析部分 -->
             <div class="analysis">
                 {% if prediction1 == 0 %}
-                    <p>Congrats! Your risk of having a heart attack is low. </p>
+                    <p>Your risk of having a heart attack is <span style="font-size: 20px;"><strong>LOW</strong></span>. </p>
                     <p>Keep maintaining a healthy lifestyle!</p>
-                    <p></p>
+                    <p> </p>
                 {% else %}
-                    <p>Your risk of having a heart attack is high.</p>
+                    <p>Your risk of having a heart attack is <span style="font-size: 20px;"><strong>HIGH</strong></span>.</p>
                     <p>Please consult a clinician for detailed advice.</p>
                 {% endif %}
             </div>
@@ -61,7 +60,7 @@
                 <h4>Advice for dietary</h4>
                 {% if bmi <= 24.9 %}
                 <p>
-                    Your BMI is healthy! However, you can still improve your BMI by consuming fewer calories than you burn.
+                    Your BMI is healthy! You can still improve your BMI by consuming fewer calories than you burn.
                     Eating a healthy, balanced diet is an important part of staying healthy and feeling your best. 
                     This means eating a wide variety of foods in the right proportions, and consuming the right amount of foodand drink to achieve and maintain a healthy body weight.
                 </p>

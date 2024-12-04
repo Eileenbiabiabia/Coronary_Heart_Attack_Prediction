@@ -91,8 +91,8 @@ def predict():
         #模型预测
         prediction1 = loaded_model_decision_tree.predict(input_data)
         prediction_result1 = round(float(prediction1[0]), 2)  # 假设是一个单一数值输出
-        #prediction2 = loaded_model_stacking_model.predict(input_data)
-        #prediction_result2 = round(float(prediction2[0]), 2)  # 假设是一个单一数值输出
+        # prediction2 = loaded_model_stacking_model.predict(input_data)
+        # prediction_result2 = round(float(prediction2[0]), 2)  # 假设是一个单一数值输出
         #prediction_result = 0.4
 
         # 将结果传递给结果页面
